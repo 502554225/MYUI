@@ -64,6 +64,13 @@
           clear(){
             if (this.closeShow){
               this.value=''
+              let children = this
+              while (children.$children[0]){
+                children=children.$children[0]
+                children.value=''
+                console.log('cccccc:',children)
+
+              }
             }
           },
          // movein(){
@@ -74,7 +81,7 @@
               this.open=false
           },
           change(){
-            this.open=!this.open   // 这里有问题
+            this.open=!this.open
             console.log('open')
             if (this.value.length>0) {
               console.log('value:',this.value)
