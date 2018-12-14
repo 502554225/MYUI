@@ -1,96 +1,158 @@
 <template>
-  <div>
-    <radio-group value="壹">
-      <radio lable = '壹'></radio>
-      <radio lable = '贰'></radio>
-      <radio lable = '叁'></radio>
-    </radio-group>
-    <radio-group value="111" type="button">
-      <radio lable = '111'></radio>
-      <radio lable = '222'></radio>
-      <radio lable = '3333'></radio>
-    </radio-group>
-    <cascader :data="list"></cascader>
-    <steps>
-      <step titil="已完成" describe="这里是一个描述"></step>
-      <step titil="已完成"></step>
-      <step titil="已完成"></step>
-    </steps>
+<div class="main">
+  <div class="tarbar-top">
+      <div class="tarbar-btn">
+        <div class="myLogo">
+          <div class="information">
+            <div class="information-body"></div>
+            <div class="btn-box">
+              <router-link to="/login"><mybutton >注销</mybutton></router-link>
+            </div>
+          </div>
+        </div>
+        <div class="tarbar-btn-body">
+            <tabs ref="tabs" :value = "router" @changeV="changeR">
+              <tab label="首页" :name="1" @click.native="changeR(1)"></tab>
+              <tab label="购物车" :name="2" @click.native="changeR(2)"></tab>
+              <tab label="历史订单" :name="3" @click.native="changeR(3)"></tab>
+            </tabs>
+        </div>
+        
+      </div>
   </div>
+  <div class="fitter"></div>
+  <div class="bc"></div>
+  <router-view/>
+  <foot></foot>
+  
+</div>
+  
 </template>
 
 <script>
-  import radio from './radio/radio'
-  import radioGroup from './radio/radio-group'
-  import cascader from './cascader/cascader'
-  import steps from './Steps/steps'
-  import step from './Steps/step'
+  
+  import tabs from './Tabs/Tabs'
+  import tab from './Tabs/Tab'
+  import mybutton from './mybutton/mybutton'
+  import foot from './footer'
   export default {
   name: 'HelloWorld',
+  components:{
+    mybutton,
+    tab,
+    tabs,
+    foot
+  },
   data () {
     return {
-      list: [
-        {
-          value:'hangzhou',
-          label:'杭州',
-          child:[
-            {
-              value:'xihuqv',
-              label:'西湖区',
-              child:[
-                {
-                  value:'xihuqv',
-                  label:'西湖区'
-                }
-              ]
-            },
-            {
-              value:'gongshuqv',
-              label:'拱墅区',
-            }
-          ]
-        },
-        {
-          value:'beijing',
-          label:'北京',
-          child:[
-            {
-              value:'yihuan',
-              label:'一环',
-            },
-            {
-              value:'erhuan',
-              label:'二环',
-            }
-          ]
-        }
-      ]
+      router:1,
+      
     }
   },
-  components:{
-    radioGroup,
-    radio,
-    cascader,
-    step,
-    steps
+  computed:{
+    
+  },
+  methods:{
+    changeR(index){
+      this.router = index;
+    }
+  },
+  watch:{
+    router(){
+      this.$router.push('/index'+this.router);
+    }
+  },
+  mounted(){
+    
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
+.main{
+  position: relative;
+  width: 100%;
+  background: #eee;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+.tarbar-top{
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  z-index: 10;
+  width: 100%;
+  height: 40px;
+  color: black;
+  
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+.fitter{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  opacity: 0.4;
+  z-index: 0;
+  filter: blur(2px);
+  background: rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+  /* background-color: #fff; */
 }
-a {
-  color: #42b983;
+.tarbar-btn{
+  /* display: flex; */
+  position: absolute;
+  /* float: right; */
+  right: 0;
+  width: 400px;
+  z-index: 10;
+}
+
+.button-box{
+  display: flex;
+  float: right;
+  width: 500px;
+ 
+}
+.btn{
+  flex: auto;
+}
+.myLogo{
+  position: relative;
+  float: right;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+  border-radius: 50%;
+  background: #999;
+  z-index: 10;
+}
+.tarbar-btn-body{
+  float: right;
+  width: 300px;
+  margin-top: 10px
+}
+.information{
+  position: absolute;
+  width: 220px;
+  height: 140px;
+  top: 40px;
+  right: 0px;
+  background: #fff;
+  visibility: hidden;
+}
+.myLogo:hover  .information{
+  visibility: visible;
+  z-index: 20;
+}
+.information-body{
+  width: 100%;
+  height: 110px;
+}
+.btn-box{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 30px;
 }
 </style>

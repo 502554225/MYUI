@@ -1,5 +1,5 @@
 <template>
-    <label :class="[type==='button' ? 'radio-button' : 'radio-default',{'mid': position==='mid'&&type === 'button','tail': position==='tail'&&type === 'button','head': position==='head'&&type === 'button','button-selected' : currentValue&&type === 'button'}]" @click="change">
+    <label :class="[type==='button' ? 'radio-button' : 'radio-default',{'mid': position==='mid'&&type === 'button','tail': position==='tail'&&type === 'button','head': position==='head'&&type === 'button','button-selected' : currentValue&&type === 'button'}]" @click.stop="change">
       <span>
         <div :checked="currentValue" :class="{'radio-input' : type !== 'button','selected' : currentValue&&type !== 'button'}" ></div>
       </span>

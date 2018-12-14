@@ -1,10 +1,11 @@
 <template>
   <div class="list" @click.stop>
     <div class="list-box">
-      <div style="height: 10px;"></div>
+      <div style="height: 5px;"></div>
       <div  v-for="(item,index) in data" class="list-item" :class="[{'itemSel' : value===item.label}]" @click="select(item,index)">
         {{item.label}}
       </div>
+      <!-- <div style="height: 5px;"></div> -->
     </div>
     <list ref="list" v-if="children.length!==0" :data="children"></list>
   </div>
@@ -42,7 +43,7 @@
         value:{
           handler: function(val){
             console.log('你点了一下')
-            let item
+            let item=null
             let index
             this.data.forEach((i,ind)=>{
               if (i.label===val){
@@ -51,31 +52,34 @@
                 return
               }
             })
-            if (item.child) {
-              this.$set(this,'children',item.child)
-              let child = this
-              if (child.$refs.list){
-                console.log(child.$refs.list)
-                child.$refs.list.children = []
-             }
-              // this.itemSel='item'+index
-            }
-            else {
-              let child = this
-              if (child.$refs.list){ //如果数组没有child,而html又child 则情况this.children
-                child.children = []
+            if (item!==null){ //如果是清空值的话，则不进行
+              if (item.child) {
+                this.$set(this,'children',item.child)
+                let child = this
+                if (child.$refs.list){
+                  console.log(child.$refs.list)
+                  child.$refs.list.children = []
+                }
+                // this.itemSel='item'+index
               }
-              let parent
-              parent = this.$parent;
-              let value=[]
-              value.push(this.value)
-              while (parent.$options.name!=='ca') {
-                value.push(parent.value)
-                parent = parent.$parent;
+              else {
+                let child = this
+                if (child.$refs.list){ //如果数组没有child,而html又child 则情况this.children
+                  child.children = []
+                }
+                let parent
+                parent = this.$parent;
+                let value=[]
+                value.push(this.value)
+                while (parent.$options.name!=='ca') {
+                  value.push(parent.value)
+                  parent = parent.$parent;
+                }
+                parent.value=value
+                parent.open=false
               }
-              parent.value=value
-              parent.open=false
             }
+
           },
           deep:true
         }
@@ -92,7 +96,9 @@
     box-sizing: border-box;
   }
   .list{
-    float: left;
+    
+    /* position: absolute; */
+    /* float: left; */
     /*vertical-align: top;*/
   }
 .list-box{
@@ -100,6 +106,8 @@
   width: 100px;
   max-height: 160px;
   border: 1px solid #B9BEC5;
+  background-color: white;
+
   border-radius: 4px;
 }
 .list-item{

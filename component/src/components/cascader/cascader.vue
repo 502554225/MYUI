@@ -6,10 +6,11 @@
         <div class="close" @click.stop="clear"></div>
       </div>
     </div>
-    <div ref="list" class="list2">
-
+  
+    <div class="list-box"> 
+      <list ref="listChild" v-show="open" :data="data" ></list>
     </div>
-    <list ref="listChild" v-show="open" :data="data" ></list>
+    
   </div>
 
 </template>
@@ -68,15 +69,11 @@
               while (children.$children[0]){
                 children=children.$children[0]
                 children.value=''
-                console.log('cccccc:',children)
-
+                children.children = []
               }
             }
           },
-         // movein(){
-         //    this.closeMove=true
-         //    console.log('MOOOOOVEIN')
-         //  },
+
           hide($event){
               this.open=false
           },
@@ -117,7 +114,9 @@
   div{
     box-sizing: border-box;
   }
-
+.select-box{
+  position: relative;
+}
 .select{
   position: relative;
   line-height: 20px;
@@ -179,10 +178,16 @@
   }
   .list2{
     width: 350px;
-    margin-top: 5px;
+    height: 5px;
   }
   .haveData{
    color: black;
   }
-
+  .list-box{
+    position: absolute;
+    width: 350px;
+    top: 33px;
+    left: 0;
+    z-index: 100;
+  }
 </style>

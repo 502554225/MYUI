@@ -25,14 +25,16 @@
             default: ''
           },
           type:{
-            validator (value) {
-              return oneOf(value, ['button']);
-            }
+            required:false,
+            // validator (value) {
+            //   return oneOf(value, ['button']);
+            // },
           },
           size:{
-            validator (value) {
-              return oneOf(value, ['small', 'large']);
-            }
+            required:false,
+            // validator (value) {
+            //   return oneOf(value, ['small', 'large']);
+            // }
           }
         },
       computed:{
@@ -78,6 +80,7 @@
           }
         })
       this.updata()
+      console.log('pppppp:',this.type)
     }
     }
 </script>

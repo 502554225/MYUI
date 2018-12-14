@@ -8,26 +8,27 @@ export function oneOf(value,list) {
     })
 }
 export function findComponentsUpward(vm,componentsName) {
-
-  let parent
+    let parent
     parent = vm.$parent
     let name = parent.$options.name
-    if (parent && name!==componentsName){
-      parent=parent.$parent
-      findComponentsUpward(parent,componentsName)
+    while (parent && name!==componentsName){
+      if(parent.$parent){
+        parent=parent.$parent
+        name = parent.$options.name
+      }
     }
+    return parent;
 
-  return parent;
 }
 export function findComponentsDownward(vm,componentsName) {
   let childrens = vm.$children
   let child =[]
   childrens.forEach(item=>{
-    console.log('name',item.$options.name)
     if (item.$options.name===componentsName){
       child.push(item);
       return
     }
+    
   })
   return child;
 }
