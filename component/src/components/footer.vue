@@ -26,7 +26,7 @@
 .footer{
     display: flex;
     background:rgba(82, 149, 231, 0.07) ;
-    padding: 30px
+    padding: 30px;
 }
 .part1{
     display: flex;

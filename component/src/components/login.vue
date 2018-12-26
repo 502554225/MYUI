@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="login-box">
         <div class="AD"></div>
         <div class="title">
             <h1>登录</h1>
@@ -43,6 +43,10 @@ export default {
 </script>
 
 <style scoped>
+.login-box{
+    background: #fff;
+    padding-bottom: 50px;
+}
 .AD{
     margin-top: -40px;
     width: 100%;
@@ -54,21 +58,25 @@ export default {
     position: absolute;
     left: 50px;  
     right: 50px;   
-    top: 195px;
+    top: 285px;
     text-align: center;
-    /* margin-left: auto;
-    margin-right: auto; */
-    z-index: -1;
+    z-index: 1;
 }
 .title{
+    position: absolute;
     width: 100px;
     height: 40px;
+    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
+    left: 0;
+    right: 0;
     background: #fff;
+    z-index: 2;
 }
 .login{
     width: 100%;
+    margin-top: 50px;
     box-sizing: border-box;
     white-space: nowrap
 }
@@ -127,7 +135,7 @@ a{
 .linex{
     position: absolute;
     left: 50%;
-    top: 230px;
+    top: 310px;
     width: 1px;
     height: 300px;
     background: #bbb;

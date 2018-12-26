@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="forget-box">
          <div class="AD"></div>
          <div class="forgetBody">
             <steps :current="current">
@@ -57,6 +57,10 @@ export default {
 }
 </script>
 <style>
+.forget-box{
+    background: #fff;
+    padding-bottom: 50px;
+}
 .AD{
     margin-top: -40px;
     width: 100%;
@@ -68,6 +72,7 @@ export default {
     margin-left: 200px;
     margin-top: 40px;
 }
+
 .body-item{
     display: flex;
     flex-direction: column;

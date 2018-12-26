@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="register-box">
         <div class="AD"></div>
         <div class="title">
             <h1>注册</h1>
@@ -37,6 +37,10 @@ export default {
 }
 </script>
 <style scoped>
+.register-box{
+    background: #fff;
+    padding-bottom: 50px;
+}
 .AD{
     margin-top: -40px;
     width: 100%;
@@ -48,22 +52,28 @@ export default {
     position: absolute;
     left: 50px;  
     right: 50px;   
-    top: 195px;
+    top: 285px;
     text-align: center;
-    z-index: -1;
+    z-index:1;
 }
 .title{
+    position: absolute;
     width: 100px;
     height: 40px;
+    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
+    left: 0;
+    right: 0;
     background: #fff;
+    z-index: 2;
 }
 .input-box{
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 50px;
     padding: 50px 0
 }
 .input-box .input{
