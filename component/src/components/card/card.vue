@@ -1,14 +1,14 @@
 <template>
     <div ref = 'bei' class="card">
-        <div v-if="tab===1" class="card-body" @click="tab = 2">
-            <div class="img">
+        <div  class="card-body" @click.stop="tab = 2">
+            <div class="img" :style="{'background':'url('+src+')'}">
                 <div class="discribe">{{discribe}}
                     <br>
                     点击选购
                 </div>
             </div>
         </div>
-        <div  v-if="tab===2" class="card-body "  @click="tab = 1">
+        <div  v-if="tab===2" class="card-body body2"  @click.stop="tab = 1">
                 <radiogroup ref = 'bb' value="中杯" type="button">
                     <radio lable = '中杯' @click.native="bei = '中杯'"></radio>
                     <radio lable = '大杯' @click.native="bei = '大杯'"></radio>
@@ -23,9 +23,9 @@
                     <radio lable = '少糖'></radio>
                     <radio lable = '正常'></radio>
                 </radiogroup>
-            <div class="body-item"><h4>{{comput}}元</h4></div>
-            <mybutton type="primary" width='160'>加入购物车</mybutton>
-        </div> 
+                <div class="body-item"><h4>{{comput}}元</h4></div>
+                <mybutton type="primary" width='160'>加入购物车</mybutton>
+            </div> 
         <div class="name"><h3>{{name}}</h3></div>
 
     </div>
@@ -43,7 +43,11 @@ export default {
     props:{
         name:String,
         discribe:String,
-        price:[Number,String]
+        price:[Number,String],
+        src:{
+            type:String,
+            default:'../../../static/img/cofe1.jpg'
+        }
     },
     data(){
         return{
@@ -71,6 +75,7 @@ export default {
 </script>
 <style>
 .card{
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -83,6 +88,20 @@ export default {
     border-radius: 5px;
     box-shadow:4px  5px 5px #aaa;
 }
+.body2{
+    /* box-sizing: border-box; */
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 201px;
+    height: 200.5px;
+    top: 0px;
+    left: 3.5px;
+    border:none;
+    background: rgba(2555, 255, 255, 0.7);
+}
 .card-body:hover >.img > .discribe{
     visibility: visible;
 }
@@ -93,19 +112,16 @@ export default {
     width: 100%;
     height: 40px;
     z-index: 11;
+    color: #fff;
     visibility: hidden;
 }
 .name {
     margin-top: 20px;
     margin-bottom: 20px
 }
-.card-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+.img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
 }
-/* .body-item *{
-    margin-left: 5px
-} */
 </style>

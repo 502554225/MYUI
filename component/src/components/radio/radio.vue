@@ -1,7 +1,7 @@
 <template>
     <label :class="[type==='button' ? 'radio-button' : 'radio-default',{'mid': position==='mid'&&type === 'button','tail': position==='tail'&&type === 'button','head': position==='head'&&type === 'button','button-selected' : currentValue&&type === 'button'}]" @click.stop="change">
-      <span>
-        <div :checked="currentValue" :class="{'radio-input' : type !== 'button','selected' : currentValue&&type !== 'button'}" ></div>
+      <span v-if="type!=='button'">
+        <div  :checked="currentValue" :class="{'radio-input' : type !== 'button','selected' : currentValue&&type !== 'button'}" ></div>
       </span>
       <slot>{{lable}}</slot>
     </label>
@@ -33,14 +33,14 @@
           }
       },
       created(){
-          let parent = findComponentsUpward(this,'radio-group')
+          
+      },
+    mounted(){
+let parent = findComponentsUpward(this,'radio-group')
           console.log('type',parent.type)
           if (parent.type) {
             this.type = parent.type
           }
-      },
-    mounted(){
-
     }
     }
 </script>

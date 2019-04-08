@@ -12,12 +12,12 @@
                 <mybutton type="primary" :width='350' :height='40' @click.native="changeStep">确认</mybutton>
             </div>
             <div v-if="current===1" class="body-item">
-                <myinput :width='350' :height='40' placeholder="你的登录账号"></myinput>
+                <myinput :width='350' :height='40' placeholder="新密码"></myinput>
                 <mybutton type="primary" :width='350' :height='40' @click.native="changeStep">确认</mybutton>
             </div>
             <div v-if="current===2" class="body-item">
-                <myinput :width='350' :height='40' placeholder="你的登录账号"></myinput>
-                <mybutton type="primary" :width='350' :height='40' @click.native="changeStep">确认</mybutton>
+                <!-- <myinput :width='350' :height='40' placeholder="你的登录账号"></myinput> -->
+                <mybutton type="primary" :width='350' :height='40' @click.native="changeStep">重置成功，去登陆</mybutton>
             </div>
          </div>
     </div>

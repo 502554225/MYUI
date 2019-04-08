@@ -9,7 +9,6 @@
                     <tab :label="2" :name="2">22222222</tab>
                     <tab :label="3" :name="3">3333333</tab>
         </tabs>
-        
     </div>
   </div>
 </template>
@@ -46,12 +45,14 @@ export default {
             {
               name:"卡布奇诺",
               price:'30',
-              discribe:"一杯好喝的咖啡"
+              discribe:"一杯好喝的咖啡",
+              src:'../../static/img/cofe1.jpg'
             },
             {
               name:"卡布奇诺",
               price:'30',
-              discribe:"一杯好喝的咖啡"
+              discribe:"一杯好喝的咖啡",
+              src:'../../static/img/cofe2.jpg'
             },
             {
               name:"卡布奇诺",
